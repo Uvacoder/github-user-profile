@@ -12,13 +12,10 @@
 
             <div class="col-md-8 col-sm-12">
                 <h2 style="margin-top: 5%;">
-                    Hi. I'm <b class="name "> Kashif Ahmad.</b>
+                    Hi. I'm <b class="name "> {{profile.name}}.</b>
                   </h2>
                   <h5 style="margin-top: 5%;padding: 10px;">
-                    A Focused and enthusiastic  <b>Full Stack Developer</b> with a keen interest in 
-                    web and android development and solving DSA problems. 
-                    I am a passionate individual who thrives to build and apply algorithms to solve real-world industry problems. 
-                    worked on various technologies like git, cloud, devops, etc.  
+                    {{profile.bio}}  
                   </h5>
 
                   <!--social media handles-->
@@ -61,9 +58,9 @@
                         <div class="container">
                             <h3>Personal information</h3>
                             <br>
-                            <h5><i class="fa fa-home" style="font-size: 30px;margin-right: 30px;"></i>  Carmichael hostel, kolkata-09, West Bengal, India.</h5>
-                            <h6><i class="fa fa-envelope" style="font-size: 30px; margin-right: 30px;"></i> kash15if@yahoo.com</h6>
-                            <h6><i class="fa fa-external-link" style="font-size: 30px; margin-right: 30px;"></i>https://kashif.fail</h6>
+                            <h5><i class="fa fa-home" style="font-size: 30px;margin-right: 30px;"></i>  {{profile.location}}.</h5>
+                            <h6><i class="fa fa-envelope" style="font-size: 30px; margin-right: 30px;"></i>{{profile.email}}</h6>
+                            <h6><i class="fa fa-external-link" style="font-size: 30px; margin-right: 30px;"></i>{{profile.blog}}</h6>
                  
                         </div>
                     <!--info div ends end-->
@@ -75,7 +72,10 @@
                 <button type="button" class="btn btn-primary" v-on:click="showProject">Projects</button>
 
                 <hr>
-
+                <div v-show="showProj">
+                <Projects v-bind:repos="repos"></Projects>
+                </div>
+                
 
 
 
@@ -89,16 +89,23 @@
 </template>
 
 <script>
+import Projects from './Projects.vue'
+
 export default {
   name: 'Portfolio',
-  data(){
-      return {
-          
-      };
+  components: {
+    Projects
   },
+  data(){
+    return{
+      showProj: false
+    };
+  },
+  props:['profile','repos'],
   methods: {
       showProject: function(){
-          this.$emit('showproject');
+         this.showProj = !this.showProj; 
+         console.log(this.showProject);
       }
   }
 }

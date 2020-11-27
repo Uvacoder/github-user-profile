@@ -1,8 +1,7 @@
 <template>
 
 
-  <Portfolio v-on:showproject="showproject"/>
-  <Projects v-bind:repos="repos" v-show="showProj"/>
+  <Portfolio v-bind:profile="profile" v-bind:repos="repos"/>
   <Input v-on:changerepo="getrep($event)"/>
 
 </template>
@@ -11,44 +10,41 @@
 
 import Input from './components/Input.vue'
 import Portfolio from './components/Portfolio.vue'
-import Projects from './components/Projects.vue'
 
 export default {
   name: 'App',
   components: {
     Input,
-    Portfolio,
-    Projects
+    Portfolio
   },
   data(){
     return{
-      username: "",
+      username: "kash15if",
       repos: {},
-      showProj: false
+      profile: {}
     };
   },
   methods: {
-      showproject: function(){
-        this.showProj = !this.showProj;
-        console.log(this.showProj);
-      },
       getrep: async function(newRepo){
-        this.username = newRepo;
-        const url = "https://api.github.com/users/" + this.username + "/repos"
-        const response = await fetch(url)
+        const url = "https://api.github.com/users/" + newRepo;
+        const profData = await fetch(url);
+        const response = await fetch(url + "/repos");
+        
       
+        this.profile = await profData.json();
         this.repos = await response.json();
-        console.log(this.repos);
 
       }
   },
   async created(){
       
-      const url = "https://api.github.com/users/" + this.username + "/repos"
-      const response = await fetch(url)
       
+      const url = "https://api.github.com/users/" + this.username;
+      const response = await fetch(url + "repos");
+      const profData = await fetch(url);
+      
+      this.profile = await profData.json();
       this.repos = await response.json();
-      await console.log(this.repos);
 
   }
 }
@@ -61,5 +57,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   margin-top: 60px;
+  margin-bottom: 90px;
 }
 </style>
