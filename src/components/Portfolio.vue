@@ -7,7 +7,7 @@
 
             <!--users image container-->
             <div class="col-md-4 col-sm-12 text-center">
-                <img src="https://avatars2.githubusercontent.com/u/43416961?v=4" alt="">
+                <img v-bind:src=profile.avatar_url alt="">
             </div>
 
             <div class="col-md-8 col-sm-12">
@@ -22,19 +22,19 @@
                     <div class="col-md-6  col-sm-12 animate__animated animate__bounceInLeft">
                         <h5 style="margin-top: 5%;">Follow me :</h5>
                             <a
-                                href="#"
+                                v-bind:href=profile.html_url
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 ><i class="fa fa-github-square social"></i
                             ></a>
                             <a
-                                href="#"
+                                v-bind:href=profile.twitter_username
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 ><i class="fa fa-twitter-square social"></i
                             ></a>
                             <a
-                            href="#"
+                            v-bind:href=profile.email
                             target="_blank"
                             rel="noopener noreferrer"
                             ><i class="fa fa-envelope social"></i
@@ -59,7 +59,7 @@
                             <h3>Personal information</h3>
                             <br>
                             <h5><i class="fa fa-home" style="font-size: 30px;margin-right: 30px;"></i>  {{profile.location}}.</h5>
-                            <h6><i class="fa fa-envelope" style="font-size: 30px; margin-right: 30px;"></i>{{profile.email}}</h6>
+                            <h6><i class="fa fa-building" style="font-size: 30px; margin-right: 30px;"></i>{{profile.company}}</h6>
                             <h6><i class="fa fa-external-link" style="font-size: 30px; margin-right: 30px;"></i>{{profile.blog}}</h6>
                  
                         </div>
