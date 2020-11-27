@@ -69,12 +69,10 @@
                 <!--row ends-->
                 </div>
 
-                <button type="button" class="btn btn-primary" v-on:click="showProject">Projects</button>
-
                 <hr>
-                <div v-show="showProj">
+                
                 <Projects v-bind:repos="repos"></Projects>
-                </div>
+                
                 
 
 
@@ -98,15 +96,12 @@ export default {
   },
   data(){
     return{
-      showProj: false
+      
     };
   },
   props:['profile','repos'],
   methods: {
-      showProject: function(){
-         this.showProj = !this.showProj; 
-         console.log(this.showProject);
-      }
+      
   }
 }
 </script>

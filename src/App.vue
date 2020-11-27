@@ -1,7 +1,7 @@
 <template>
 
 
-  <Portfolio v-bind:profile="profile" v-bind:repos="repos"/>
+  <Portfolio  v-if="showprof" v-bind:profile="profile" v-bind:repos="repos"/>
   <Input v-on:changerepo="getrep($event)"/>
 
 </template>
@@ -19,9 +19,10 @@ export default {
   },
   data(){
     return{
-      username: "kash15if",
+      username: "",
       repos: {},
-      profile: {}
+      profile: {},
+      showprof: false
     };
   },
   methods: {
@@ -30,9 +31,10 @@ export default {
         const profData = await fetch(url);
         const response = await fetch(url + "/repos");
         
-      
+        
         this.profile = await profData.json();
         this.repos = await response.json();
+        this.showprof = true;
 
       }
   },
