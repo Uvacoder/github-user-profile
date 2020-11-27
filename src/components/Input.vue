@@ -10,7 +10,7 @@
             <div class="input-group col-md-8 offset-md-2 col-sm-10 offset-sm-1">
                 <input type="text" class="form-control" placeholder="Your github username" aria-label="Recipient's username" aria-describedby="basic-addon2" v-model="username">
                 <div class="input-group-append">
-                  <button class="btn btn-success" type="button" v-on:click="getRepo()">Button</button>
+                  <button class="btn btn-success" type="button" v-on:click="getRepo()">Submit</button>
                 </div>
               </div>
         </div>
