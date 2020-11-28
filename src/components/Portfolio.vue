@@ -11,6 +11,9 @@
             </div>
 
             <div class="col-md-8 col-sm-12">
+
+            
+
                 <h2 style="margin-top: 5%;">
                     Hi. I'm <b class="name "> {{profile.name}}.</b>
                   </h2>
@@ -60,7 +63,7 @@
                             <br>
                             <h5><i class="fa fa-home" style="font-size: 30px;margin-right: 30px;"></i>  {{profile.location}}.</h5>
                             <h6><i class="fa fa-building" style="font-size: 30px; margin-right: 30px;"></i>{{profile.company}}</h6>
-                            <h6><i class="fa fa-external-link" style="font-size: 30px; margin-right: 30px;"></i>{{profile.blog}}</h6>
+                            <h6><i class="fa fa-external-link" style="font-size: 30px; margin-right: 30px;"></i><a v-bind:href= profile.blog style="text-decoration:none;font-size:20px" > {{profile.blog }}</a></h6>
                  
                         </div>
                     <!--info div ends end-->

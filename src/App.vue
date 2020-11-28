@@ -1,8 +1,16 @@
 <template>
 
+  <div>
 
-  <Portfolio  v-if="showprof" v-bind:profile="profile" v-bind:repos="repos"/>
-  <Input v-on:changerepo="getrep($event)"/>
+      <div style="text-align:center;">
+        <button v-if="!showprof" class="btn btn-success" v-on:click="getrep($route.params.id)" >Show profile</button>
+      </div>
+      
+      <Portfolio v-if="showprof"  v-bind:profile="profile" v-bind:repos="repos"/>
+      <Input v-on:changerepo="getrep($event)"/>
+
+  </div>
+
 
 </template>
 
@@ -10,6 +18,7 @@
 
 import Input from './components/Input.vue'
 import Portfolio from './components/Portfolio.vue'
+
 
 export default {
   name: 'App',
@@ -27,27 +36,19 @@ export default {
   },
   methods: {
       getrep: async function(newRepo){
-        const url = "https://api.github.com/users/" + newRepo;
+
+        console.log(newRepo)
+        const url = "https://api.github.com/users/" + newRepo
         const profData = await fetch(url);
         const response = await fetch(url + "/repos");
-        
+        this.username = newRepo
         
         this.profile = await profData.json();
         this.repos = await response.json();
-        this.showprof = true;
-
+        this.showprof = await  !this.showprof;
       }
   },
   async created(){
-      
-      
-      const url = "https://api.github.com/users/" + this.username;
-      const response = await fetch(url + "repos");
-      const profData = await fetch(url);
-      
-      this.profile = await profData.json();
-      this.repos = await response.json();
-
   }
 }
 </script>
