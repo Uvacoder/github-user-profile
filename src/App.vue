@@ -1,6 +1,9 @@
 <template>
 
   <div>
+      <div id="mybutton">
+        <i class="fa fa-chevron-circle-up feedback"></i>
+      </div>
 
       <div style="text-align:center;">
         <button v-if="!showprof" class="btn btn-success" v-on:click="getrep($route.params.id)" >Show profile</button>
@@ -63,5 +66,21 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
   margin-bottom: 90px;
+}
+
+.feedback {
+  background-color : #31B0D5;
+  color: white;
+  border-color: #04316b;
+  padding: 10px;
+  border-radius: 30%
+}
+
+#mybutton {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  font-size:50px;
+  z-index: 2;
 }
 </style>
