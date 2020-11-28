@@ -35,7 +35,7 @@ export default {
       repos: {},
       profile: {},
       showprof: false,
-      url: "https://kashif.fail/"
+      url: "https://kash15if.tech/"
     };
   },
   methods: {
