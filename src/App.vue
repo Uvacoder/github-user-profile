@@ -1,7 +1,7 @@
 <template>
 
   <div>
-      <div id="mybutton" v-on:click="topFunction">
+      <div id="mybutton" v-if="showprof" v-on:click="topFunction">
         <i class="fa fa-chevron-circle-up feedback"></i>
       </div>
 
