@@ -1,7 +1,7 @@
 <template>
 
   <div>
-      <div id="mybutton">
+      <div id="mybutton" v-on:click="topFunction">
         <i class="fa fa-chevron-circle-up feedback"></i>
       </div>
 
@@ -51,6 +51,10 @@ export default {
         this.repos = await response.json();
         this.url =  await this.url + newRepo
         this.showprof = await  !this.showprof;
+      },
+      topFunction: function() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
       }
   },
   async created(){
