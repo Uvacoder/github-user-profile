@@ -22,7 +22,7 @@
                   </h5>
 
                   <!--social media handles-->
-                    <div class="col-md-6  col-sm-12 animate__animated animate__bounceInLeft">
+                    <div class="col-md-6  col-sm-12">
                         <h5 style="margin-top: 5%;">Follow me :</h5>
                             <a
                                 v-bind:href=profile.html_url
@@ -43,8 +43,13 @@
                             ><i class="fa fa-envelope social"></i
                         ></a>
                     </div>
-                        
-                    <hr>
+
+ 
+                        <div class="container">
+                            <h5 style="margin-top: 5%;">Your Link : <a v-bind:href = url>{{url}}</a></h5>  
+                        </div>
+                    
+                <hr>
                         
             <!--bio colums end-->
             </div>
@@ -99,10 +104,10 @@ export default {
   },
   data(){
     return{
-      
+        
     };
   },
-  props:['profile','repos'],
+  props:['profile','repos','url'],
   methods: {
       
   }

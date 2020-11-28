@@ -6,7 +6,7 @@
         <button v-if="!showprof" class="btn btn-success" v-on:click="getrep($route.params.id)" >Show profile</button>
       </div>
       
-      <Portfolio v-if="showprof"  v-bind:profile="profile" v-bind:repos="repos"/>
+      <Portfolio v-if="showprof"  v-bind:profile="profile" v-bind:repos="repos" v-bind:url="url"/>
       <Input v-on:changerepo="getrep($event)"/>
 
   </div>
@@ -31,7 +31,8 @@ export default {
       username: "",
       repos: {},
       profile: {},
-      showprof: false
+      showprof: false,
+      url: "https://kashif.fail/"
     };
   },
   methods: {
@@ -45,6 +46,7 @@ export default {
         
         this.profile = await profData.json();
         this.repos = await response.json();
+        this.url =  await this.url + newRepo
         this.showprof = await  !this.showprof;
       }
   },
